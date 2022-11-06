@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Calculator.SOLID.Library.Calculators.AdditionCalculator">
+    <Position X="2.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\AdditionCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.SOLID.Library.Calculators.AllOperationCalculator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEIAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\AllOperationCalculator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Calculator.SOLID.Library.Calculators.BaseCalculator&lt;T&gt;">
+    <Position X="3.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACAAAAAAAAAAAACAQAACAAQABAAAACAAAAAAA=</HashCode>
+      <FileName>Calculators\BaseCalculator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calculator.SOLID.Library.Calculators.DivisionCalculator">
+    <Position X="9" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAACAAAAAAA=</HashCode>
+      <FileName>Calculators\DivisionCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.SOLID.Library.Calculators.MultiplicationCalculator">
+    <Position X="6.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\MultiplicationCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.SOLID.Library.Calculators.SubtractionCalculator">
+    <Position X="4.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\SubtractionCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calculator.SOLID.Library.Validator.CalculatorInputValidator">
+    <Position X="1" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validator\CalculatorInputValidator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Calculator.SOLID.Library.Calculators.Interface.IAllOperationCalculator">
+    <Position X="11.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\Interface\IAllOperationCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Calculator.SOLID.Library.Calculators.Interface.ICalculator&lt;T&gt;">
+    <Position X="6.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\Interface\ICalculator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Calculator.SOLID.Library.Interface.IOperation">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface\IOperation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Calculator.SOLID.Library.Calculators.Interface.ICalculatorProp">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Calculators\Interface\ICalculatorProp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Calculator.SOLID.Library.Validator.Interface.ICalculatorInputValidator">
+    <Position X="1" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validator\Interface\ICalculatorInputValidator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
