@@ -50,16 +50,4 @@ namespace Calculator.SOLID.Library.Tests.Calculators
             _calculatorInputValidator.Verify( x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
         }
     }
-
-    public class NewAdditionCalculator : AdditionCalculator
-    {
-        public NewAdditionCalculator(ICalculatorInputValidator calculatorInputValidator) 
-            : base(calculatorInputValidator)
-        {
-          
-        }
-        public override char CommaSeperator { get; protected set; } = '-';
-
-        public override string RegexString { get; protected set; } = "[0-9]-(,[0-9]+)+";
-    }
 }
