@@ -21,7 +21,7 @@ namespace Calculator.NonSOLID
                 var input = Console.ReadLine();
 
                 Console.WriteLine("*************************************************** \n");
-                Console.WriteLine("Please Select your Operation as below option: \n");
+                Console.WriteLine("Please select your Operation option: \n");
                 Console.WriteLine(" 1 - Sum \n");
                 Console.WriteLine(" 2 - Minus \n");
                 Console.WriteLine(" 3 - Multiplier \n");

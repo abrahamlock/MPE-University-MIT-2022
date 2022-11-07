@@ -33,7 +33,7 @@ namespace Calculator.SOLID.Manager
                 var input = Console.ReadLine();
 
                 _consoleInputOutput.WriteLine("*************************************************** \n");
-                _consoleInputOutput.WriteLine("Please Select your Operation as below option: \n");
+                _consoleInputOutput.WriteLine("Please select your Operation option: \n");
                 _consoleInputOutput.WriteLine(" 1 - Sum \n");
                 _consoleInputOutput.WriteLine(" 2 - Minus \n");
                 _consoleInputOutput.WriteLine(" 3 - Multiplier \n");
