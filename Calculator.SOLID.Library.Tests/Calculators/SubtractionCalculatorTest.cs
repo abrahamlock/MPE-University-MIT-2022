@@ -24,33 +24,44 @@ namespace Calculator.SOLID.Library.Tests.Calculators
 
         [TestMethod]
         public void Calculate_SubrationOfList_HappyPath()
-        {
-            _subtractionCalculator.Calculate("1,2,3");
-
+        {  
+            //Arrange
+            var inputList = "1,2,3";
             var exepectedResult = -4;
+
+            //Act
+            _subtractionCalculator.Calculate(inputList);
+
             var actualResult = _subtractionCalculator.GetCalulatedValue();
 
+            //Assert
             Assert.AreEqual(exepectedResult, actualResult);
 
+            //Arrange
+            inputList = "100,4, 77";
+            _subtractionCalculator.Calculate(inputList);
+            exepectedResult = 19;
 
-            _subtractionCalculator.Calculate("100,4, 77");
+            //Act
+            actualResult = _subtractionCalculator.GetCalulatedValue();
 
-            var exepectedResult2 = 19;
-            var actualResult2 = _subtractionCalculator.GetCalulatedValue();
-
-            Assert.AreEqual(exepectedResult2, actualResult2);
-
-            _calculatorInputValidator.Verify();
+            //Assert
+            Assert.AreEqual(exepectedResult, actualResult);
         }
 
         [TestMethod]
         public void Calculate_SubrationOfList_ExpectingNegativeValue()
         {
-            _subtractionCalculator.Calculate("1,6,7,10");
-
+            //Arrange
+            var inputList = "1,6,7,10";
             var exepectedResult = -22;
+
+            //Act
+            _subtractionCalculator.Calculate(inputList);
+
             var actualResult = _subtractionCalculator.GetCalulatedValue();
 
+            //Assert
             Assert.AreEqual(exepectedResult, actualResult);
         }
 
@@ -58,8 +69,14 @@ namespace Calculator.SOLID.Library.Tests.Calculators
         [ExpectedException(typeof(FormatException))]
         public void Calculate_InvalidInputFormat_ThrowFormatException()
         {
-            _subtractionCalculator.Calculate("*1,3");
-            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
+            //Arrange
+            var inputList = "*1,3";
+
+            //Setup
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+
+            //Act
+            _subtractionCalculator.Calculate(inputList);
         }
     }
 }

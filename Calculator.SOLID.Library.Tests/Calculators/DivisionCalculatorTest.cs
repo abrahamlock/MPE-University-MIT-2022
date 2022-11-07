@@ -25,21 +25,28 @@ namespace Calculator.SOLID.Library.Tests.Calculators
         [TestMethod]
         public void Calculate_DivisionOfList_HappyPath()
         {
-            _divisionCalculator.Calculate("1,2");
-
+            //Arrange
+            var inputList = "1,2";
             var exepectedResult = 0.5;
+
+            //Act
+            _divisionCalculator.Calculate(inputList);
+
             var actualResult = _divisionCalculator.GetCalulatedValue();
 
+            //Assert
             Assert.AreEqual(exepectedResult, actualResult);
 
+            //Arrange
+            inputList = "100,2, 10";
+            _divisionCalculator.Calculate(inputList);
+            exepectedResult = 5;
 
-            _divisionCalculator.Calculate("100,2, 10");
+            //Act
+            actualResult = _divisionCalculator.GetCalulatedValue();
 
-            var exepectedResult2 = 5;
-            var actualResult2 = _divisionCalculator.GetCalulatedValue();
-
-            Assert.AreEqual(exepectedResult2, actualResult2);
-
+            //Assert
+            Assert.AreEqual(exepectedResult, actualResult);
             _calculatorInputValidator.Verify();
         }
 
@@ -48,29 +55,45 @@ namespace Calculator.SOLID.Library.Tests.Calculators
         [ExpectedException(typeof(FormatException))]
         public void Calculate_InvalidInputFormat_ThrowFormatException()
         {
-            _divisionCalculator.Calculate("*1,3");
-            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
+            //Arrange
+            var inputList = "*1,3";
+
+            //Setup
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+
+            //Act
+            _divisionCalculator.Calculate(inputList);
         }
 
         [TestMethod]
-        public void Calculate_VerifyInputValidator_RanMoreThan1()
+        public void Calculate_VerifyInputValidator_RanTwoTimes()
         {
-            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
+            //Arrange
+            var inputList = "1,2";
+
+            //Setup
             _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(true);
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
 
-            _divisionCalculator.Calculate("1,2");
+            //Act
+            _divisionCalculator.Calculate(inputList);
 
-            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.AtLeastOnce);
+            //Assert
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Exactly(2));
         }
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
         public void Calculate_DivideByZero_ThrowFormatException()
         {
-            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
+            //Arrange
+            var inputList = "1,0";
+
+            //Setup
             _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new DivideByZeroException());
 
-            _divisionCalculator.Calculate(It.IsAny<string>());
+            //Act
+            _divisionCalculator.Calculate(inputList);
         }
     }
 }

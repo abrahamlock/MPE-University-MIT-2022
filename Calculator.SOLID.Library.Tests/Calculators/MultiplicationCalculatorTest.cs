@@ -12,43 +12,72 @@ namespace Calculator.SOLID.Library.Tests.Calculators
     {
         private AutoMocker _mocker;
         private MultiplicationCalculator _multiplicationCalculator;
-        private Mock<ICalculatorInputValidator> calculatorInputValidator;
+        private Mock<ICalculatorInputValidator> _calculatorInputValidator;
 
         [TestInitialize]
         public void Initialize()
         {
             _mocker = new AutoMocker();
             _multiplicationCalculator = _mocker.CreateInstance<MultiplicationCalculator>();
-            calculatorInputValidator = _mocker.GetMock<ICalculatorInputValidator>();
+            _calculatorInputValidator = _mocker.GetMock<ICalculatorInputValidator>();
         }
 
         [TestMethod]
         public void Calculate_MultiplicationOfList_HappyPath()
         {
-            _multiplicationCalculator.Calculate("1,2,3");
-
+            //Arrange
+            var inputList = "1,2,3";
             var exepectedResult = 6;
+
+            //Act
+            _multiplicationCalculator.Calculate(inputList);
+
             var actualResult = _multiplicationCalculator.GetCalulatedValue();
+
+            //Assert
+            Assert.AreEqual(exepectedResult, actualResult);
+
+            //Arrange
+            inputList = "6,9, 10,3";
+            _multiplicationCalculator.Calculate(inputList);
+            exepectedResult = 1620;
+
+            actualResult = _multiplicationCalculator.GetCalulatedValue();
 
             Assert.AreEqual(exepectedResult, actualResult);
 
-
-            _multiplicationCalculator.Calculate("6,9, 10,3");
-
-            var exepectedResult2 = 1620;
-            var actualResult2 = _multiplicationCalculator.GetCalulatedValue();
-
-            Assert.AreEqual(exepectedResult2, actualResult2);
-
-            calculatorInputValidator.Verify();
+            _calculatorInputValidator.Verify();
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void Calculate_InvalidInputFormat_ThrowFormatException()
         {
-            _multiplicationCalculator.Calculate("1&&93**8");
-            calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
+            //Arrange
+            var inputList = "*1 && 93 * *8";
+
+            //Setup
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+
+            //Act
+            _multiplicationCalculator.Calculate(inputList);     
+        }
+
+        [TestMethod]
+        public void Calculate_VerifyInputValidator_RanOnce()
+        {
+            //Arrange
+            var inputList = "1,2";
+
+            //Setup
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(true);
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
+
+            //Act
+            _multiplicationCalculator.Calculate(inputList);
+
+            //Assert
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
         }
     }
 }

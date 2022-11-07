@@ -26,28 +26,60 @@ namespace Calculator.SOLID.Library.Tests.Calculators
         [TestMethod]
         public void Calculate_AdditionOfList_HappyPath()
         {
-            _additionCalculator.Calculate("1,2,3");
-
+            //Arrange
+            var inputList = "1,2,3";
             var exepectedResult = 6;
+
+            //Act
+            _additionCalculator.Calculate(inputList);
+
             var actualResult = _additionCalculator.GetCalulatedValue();
 
+            //Assert
             Assert.AreEqual(exepectedResult, actualResult);
 
+            //Arrange
+            inputList = "100,4, 77";
+            _additionCalculator.Calculate(inputList);
+            exepectedResult = 181;
 
-            _additionCalculator.Calculate("100,4, 77");
+            //Act
+            actualResult = _additionCalculator.GetCalulatedValue();
 
-            var exepectedResult2 = 181;
-            var actualResult2 = _additionCalculator.GetCalulatedValue();
-
-            Assert.AreEqual(exepectedResult2, actualResult2);
+            //Assert
+            Assert.AreEqual(exepectedResult, actualResult);
         }
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void Calculate_InvalidInputFormat_ThrowFormatException()
         {
-            _additionCalculator.Calculate("*1,3");
-            _calculatorInputValidator.Verify( x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
+            //Arrange
+            var inputList = "*1,3";
+
+            //Setup
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+
+            //Act
+            _additionCalculator.Calculate(inputList);
         }
+
+        [TestMethod]
+        public void Calculate_VerifyInputValidator_RanOnce()
+        {
+            //Arrange
+            var inputList = "1,2";
+
+            //Setup
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(true);
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
+
+            //Act
+            _additionCalculator.Calculate(inputList);
+
+            //Assert
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
+        }
+
     }
 }
