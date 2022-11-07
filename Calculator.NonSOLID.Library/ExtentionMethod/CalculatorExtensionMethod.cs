@@ -7,7 +7,7 @@ namespace Calculator.NonSOLID.Library.ExtentionMethod
 {
     public static class CalculatorExtensionMethod
     {
-        public static IEnumerable<int> ToIntList(this string input, char commaSeperator)
+        public static IEnumerable<int> ToIntList(this string input, char commaSeperator = ',')
         {
             return input.Split(commaSeperator).Select(int.Parse);
         }

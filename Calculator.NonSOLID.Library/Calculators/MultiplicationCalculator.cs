@@ -15,7 +15,7 @@ namespace Calculator.NonSOLID.Library.Calculators
 
             foreach (var value in values.Skip(1))
             {
-                temp -= value;
+                temp *= value;
             }
 
             Total = temp;

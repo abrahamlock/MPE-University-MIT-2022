@@ -1,4 +1,5 @@
 ﻿using Calculator.NonSOLID.Library.Calculators;
+using Calculator.NonSOLID.Library.ExtentionMethod;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,9 @@ namespace Calculator.NonSOLID.Library.Tests
         }
 
         [TestMethod]
-        public void AdditionCalculator_CalculateAdditionOfList_HappyPath()
+        public void Calculate_SubtractionOfList_HappyPath()
         {
-            var list ="1,2,3".ToIntergerList();
+            var list ="1,2,3".ToIntList();
             _substrationCalculator.Calculate(list);
 
             var exepectedResult = -4;
@@ -31,9 +32,9 @@ namespace Calculator.NonSOLID.Library.Tests
 
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
-        public void AdditionCalculator_InvalidInputFormat_ThrowFormatException()
+        public void Calculate_InvalidInputFormat_ThrowFormatException()
         {
-            var list = "*1,2".ToIntergerList();
+            var list = "*1,2".ToIntList();
             _substrationCalculator.Calculate(list);
         }
     }

@@ -8,26 +8,34 @@ using System.Text;
 namespace Calculator.NonSOLID.Library.Tests
 {
     [TestClass]
-    public class AdditionCalculatorTest
+    public class MultiplicationCalculatorTest
     {
-        private AdditionCalculator _additionCalculator;
+        private MultiplicationCalculator _multiplicationCalculator;
 
         [TestInitialize]
         public void Initialize()
         {
-            _additionCalculator = new AdditionCalculator();
+            _multiplicationCalculator = new MultiplicationCalculator();
         }
 
         [TestMethod]
-        public void Calculate_AdditionOfList_HappyPath()
+        public void Calculate_MultiplicationOfList_HappyPath()
         {
             var list = "1,2,3".ToIntList();
-            _additionCalculator.Calculate(list);
+            _multiplicationCalculator.Calculate(list);
 
             var exepectedResult = 6;
-            var actualResult = _additionCalculator.Total;
+            var actualResult = _multiplicationCalculator.Total;
 
             Assert.AreEqual(exepectedResult, actualResult);
+
+            var list2 = "6,9, 10,3".ToIntList();
+            _multiplicationCalculator.Calculate(list2);
+
+            var exepectedResult2 = 1620;
+            var actualResult2 = _multiplicationCalculator.Total;
+
+            Assert.AreEqual(exepectedResult2, actualResult2);
         }
 
         [TestMethod]
@@ -35,7 +43,7 @@ namespace Calculator.NonSOLID.Library.Tests
         public void Calculate_InvalidInputFormat_ThrowFormatException()
         {
             var list = "*1,2".ToIntList();
-            _additionCalculator.Calculate(list);
+            _multiplicationCalculator.Calculate(list);
         }
     }
 }
