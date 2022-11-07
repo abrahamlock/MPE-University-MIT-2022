@@ -52,6 +52,16 @@ namespace Calculator.SOLID.Library.Tests.Calculators
             _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
         }
 
+        [TestMethod]
+        public void Calculate_VerifyInputValidator_RanMoreThan1()
+        {
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(true);
+
+            _divisionCalculator.Calculate("1,2");
+
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.AtLeastOnce);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
