@@ -6,5 +6,7 @@ This simple program will based on the user enterlist of numbers + selected Opera
 Example :
 
 Input list:  1,2,3
+
 Operand : +
+
 Total = 1+2+3=6
