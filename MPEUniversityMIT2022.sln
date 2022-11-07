@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.SOLID", "Calculator\Calculator.SOLID.csproj", "{AB6539B1-BA48-49DB-BFA7-4634E4518E1C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.SOLID.Library", "Calculator.SOLID.Library\Calculator.SOLID.Library.csproj", "{2736AD06-C9A6-4C16-BC29-351842F04C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.SOLID.Library.Tests", "Calculator.SOLID.Library.Tests\Calculator.SOLID.Library.Tests.csproj", "{E4DC2BA1-9E38-41B3-B152-AAD983EB881C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.SOLID.Library.Tests", "Calculator.SOLID.Library.Tests\Calculator.SOLID.Library.Tests.csproj", "{E4DC2BA1-9E38-41B3-B152-AAD983EB881C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.NonSOLID", "Calculator.NonSOLID\Calculator.NonSOLID.csproj", "{D7F682C3-11A9-4DF9-A5BC-36890D3F8441}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.NonSOLID", "Calculator.NonSOLID\Calculator.NonSOLID.csproj", "{D7F682C3-11A9-4DF9-A5BC-36890D3F8441}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.NonSOLID.Library", "Calculator.NonSOLID.Library\Calculator.NonSOLID.Library.csproj", "{B5C41A11-B684-45D1-A667-B54C0847FC0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.NonSOLID.Library", "Calculator.NonSOLID.Library\Calculator.NonSOLID.Library.csproj", "{B5C41A11-B684-45D1-A667-B54C0847FC0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.NonSOLID.Library.Tests", "Calculator.NonSOLID.Library.Tests\Calculator.NonSOLID.Library.Tests.csproj", "{330789FF-92DB-40A5-854D-445ECBE6E1A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.NonSOLID.Library.Tests", "Calculator.NonSOLID.Library.Tests\Calculator.NonSOLID.Library.Tests.csproj", "{330789FF-92DB-40A5-854D-445ECBE6E1A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator.SOLID", "Calculator.SOLID\Calculator.SOLID.csproj", "{8E22B52E-092F-4EAD-9EEF-40C4B95E508E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AB6539B1-BA48-49DB-BFA7-4634E4518E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB6539B1-BA48-49DB-BFA7-4634E4518E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB6539B1-BA48-49DB-BFA7-4634E4518E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB6539B1-BA48-49DB-BFA7-4634E4518E1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2736AD06-C9A6-4C16-BC29-351842F04C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2736AD06-C9A6-4C16-BC29-351842F04C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2736AD06-C9A6-4C16-BC29-351842F04C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{330789FF-92DB-40A5-854D-445ECBE6E1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{330789FF-92DB-40A5-854D-445ECBE6E1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{330789FF-92DB-40A5-854D-445ECBE6E1A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E22B52E-092F-4EAD-9EEF-40C4B95E508E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E22B52E-092F-4EAD-9EEF-40C4B95E508E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E22B52E-092F-4EAD-9EEF-40C4B95E508E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E22B52E-092F-4EAD-9EEF-40C4B95E508E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
