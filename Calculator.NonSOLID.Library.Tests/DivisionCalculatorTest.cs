@@ -51,7 +51,7 @@ namespace Calculator.NonSOLID.Library.Tests
 
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
-        public void Calculate_DivideByZero_ThrowFormatException()
+        public void Calculate_DivideByZero_ThrowDivideByZeroException()
         {
             var list = "1,0".ToIntList();
             _divisionCalculator.Calculate(list);

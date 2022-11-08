@@ -83,7 +83,7 @@ namespace Calculator.SOLID.Library.Tests.Calculators
         }
 
         [TestMethod]
-        public void Calculate_DivideByZero_ThrowFormatException()
+        public void Calculate_DivideByZero_ThrowDivideByZeroException()
         {
             //Arrange
             var inputList = "1,0";
