@@ -73,7 +73,7 @@ namespace Calculator.SOLID.Library.Tests.Calculators
             var inputList = "*1,3";
 
             //Setup
-            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(false);
 
             //Act
             _subtractionCalculator.Calculate(inputList);

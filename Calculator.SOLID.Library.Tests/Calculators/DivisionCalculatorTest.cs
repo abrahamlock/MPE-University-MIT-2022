@@ -59,14 +59,14 @@ namespace Calculator.SOLID.Library.Tests.Calculators
             var inputList = "*1,3";
 
             //Setup
-            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(false);
 
             //Act
             _divisionCalculator.Calculate(inputList);
         }
 
         [TestMethod]
-        public void Calculate_VerifyInputValidator_RanTwoTimes()
+        public void Calculate_VerifyInputValidator_RanOnce()
         {
             //Arrange
             var inputList = "1,2";
@@ -79,21 +79,29 @@ namespace Calculator.SOLID.Library.Tests.Calculators
             _divisionCalculator.Calculate(inputList);
 
             //Assert
-            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Exactly(2));
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(DivideByZeroException))]
         public void Calculate_DivideByZero_ThrowFormatException()
         {
             //Arrange
             var inputList = "1,0";
 
             //Setup
-            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new DivideByZeroException());
-
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()))
+                .Throws(new DivideByZeroException());
+            _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Never);
+           
             //Act
-            _divisionCalculator.Calculate(inputList);
+            try
+            {
+                _divisionCalculator.Calculate(inputList);
+            }
+            catch (DivideByZeroException)
+            {
+                _calculatorInputValidator.Verify(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>()), Times.Once);
+            }
         }
     }
 }

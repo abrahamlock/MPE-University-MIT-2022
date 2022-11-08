@@ -57,7 +57,7 @@ namespace Calculator.SOLID.Library.Tests.Calculators
             var inputList = "*1 && 93 * *8";
 
             //Setup
-            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Throws(new FormatException());
+            _calculatorInputValidator.Setup(x => x.IsContainInvalidInput(It.IsAny<Func<bool>>(), It.IsAny<Exception>())).Returns(false);
 
             //Act
             _multiplicationCalculator.Calculate(inputList);     

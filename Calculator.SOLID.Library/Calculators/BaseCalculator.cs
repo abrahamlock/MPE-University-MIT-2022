@@ -30,12 +30,15 @@ namespace Calculator.SOLID.Library.Calculators
         public void Calculate(string input)
         {
 
-            this._calculatorInputValidator.IsContainInvalidInput(
-                () => {
-                    var r = new Regex(RegexString);
-                    return (!r.IsMatch(input));
-                }, new FormatException($" {input} was not in correct format! ")
-            );
+            if (this._calculatorInputValidator.IsContainInvalidInput(
+                 () =>
+                 {
+                     var r = new Regex(RegexString);
+                     return (!r.IsMatch(input));
+                 }, new FormatException($" {input} was not in correct format! ")
+             ))
+                return;
+
             IEnumerable<T> values = input.ToTypeList<T>(CommaSeperator);
             this.CalculatorOperation(values);
         }
