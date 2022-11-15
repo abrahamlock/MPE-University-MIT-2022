@@ -11,6 +11,7 @@ namespace Calculator.SOLID
             using (IServiceScope scope = bootstrapper.Scope)
             {
                 var service = scope.ServiceProvider.GetService<ICalculatorManager>();
+                while(true)
                 service.StartCalculation();
             }
         }
